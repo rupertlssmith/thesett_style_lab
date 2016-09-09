@@ -62,6 +62,11 @@ module.exports = function(grunt) {
                     dest: 'app/styles'
                 }, {
                     expand: true,
+                    cwd: 'bower_components/thesett-laf/app',
+                    src: ['**'],
+                    dest: 'app'
+                }, {
+                    expand: true,
                     cwd: 'src',
                     src: ['index.html'],
                     dest: 'app'
