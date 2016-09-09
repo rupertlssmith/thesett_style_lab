@@ -1,9 +1,9 @@
-module Permissions.State exposing (init, update)
+module Typography.State exposing (init, update)
 
 import Platform.Cmd exposing (Cmd)
 import Material
 import Material.Helpers exposing (lift)
-import Permissions.Types exposing (..)
+import Typography.Types exposing (..)
 
 
 init : Model

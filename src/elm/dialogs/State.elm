@@ -1,9 +1,9 @@
-module Roles.State exposing (init, update)
+module Dialogs.State exposing (init, update)
 
 import Platform.Cmd exposing (Cmd)
 import Material
 import Material.Helpers exposing (lift)
-import Roles.Types exposing (..)
+import Dialogs.Types exposing (..)
 
 
 init : Model

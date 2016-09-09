@@ -1,4 +1,4 @@
-module Accounts.View exposing (root, dialog)
+module Tables.View exposing (root, dialog)
 
 import Set as Set
 import Debug as Debug
@@ -14,14 +14,14 @@ import Material.Table as Table
 import Material.Button as Button
 import Material.Icon as Icon
 import Material.Toggles as Toggles
-import Accounts.Types exposing (..)
-import Accounts.State exposing (..)
+import Tables.Types exposing (..)
+import Tables.State exposing (..)
 
 
 root : Model -> Html Msg
 root model =
     div [ class "layout-fixed-width" ]
-        [ h4 [] [ text "User Accounts" ]
+        [ h4 [] [ text "User Tables" ]
         , table model
         ]
 

@@ -11,9 +11,9 @@ import Menu.Types
 import Main.Types exposing (..)
 import Main.State exposing (..)
 import Main.View exposing (..)
-import Accounts.State
-import Roles.State
-import Permissions.State
+import Tables.State
+import Buttons.State
+import Cards.State
 
 
 main : Program Never

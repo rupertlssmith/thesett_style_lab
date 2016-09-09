@@ -1,4 +1,4 @@
-module Roles.Types exposing (..)
+module Dialogs.Types exposing (..)
 
 import Material
 

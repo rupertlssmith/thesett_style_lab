@@ -1,4 +1,4 @@
-module Permissions.View exposing (root)
+module Buttons.View exposing (root)
 
 import Html exposing (..)
 import Html.Attributes exposing (title)
@@ -7,7 +7,7 @@ import Platform.Cmd exposing (Cmd)
 import String
 import Material.Options as Options exposing (Style, css)
 import Material.Color as Color
-import Permissions.Types exposing (..)
+import Buttons.Types exposing (..)
 
 
 root : Model -> Html Msg

@@ -14,9 +14,9 @@ import Material.Icon as Icon
 import Material.Toggles as Toggles
 import Material.Typography as Typography
 import Layout.Types
-import Accounts.View
-import Roles.View
-import Permissions.View
+import Tables.View
+import Buttons.View
+import Cards.View
 import Main.Types exposing (..)
 
 
@@ -86,8 +86,8 @@ view' model =
                              polyfill work on some browsers.
                           -}
                         , case nth model.selectedTab tabs of
-                            Just ( "Accounts", _, _ ) ->
-                                App.map AccountsMsg (Accounts.View.dialog model.accounts)
+                            Just ( "Tables", _, _ ) ->
+                                App.map TablesMsg (Tables.View.dialog model.accounts)
 
                             _ ->
                                 div [] []
@@ -124,9 +124,9 @@ header model =
 
 tabs : List ( String, String, Model -> Html Msg )
 tabs =
-    [ ( "Accounts", "accounts", .accounts >> Accounts.View.root >> App.map AccountsMsg )
-    , ( "Roles", "roles", .roles >> Roles.View.root >> App.map RolesMsg )
-    , ( "Permissions", "permissions", .permissions >> Permissions.View.root >> App.map PermissionsMsg )
+    [ ( "Tables", "accounts", .accounts >> Tables.View.root >> App.map TablesMsg )
+    , ( "Buttons", "roles", .roles >> Buttons.View.root >> App.map ButtonsMsg )
+    , ( "Cards", "permissions", .permissions >> Cards.View.root >> App.map CardsMsg )
     ]
 
 

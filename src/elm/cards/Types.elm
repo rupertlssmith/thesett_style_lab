@@ -1,4 +1,4 @@
-module Permissions.Types exposing (..)
+module Cards.Types exposing (..)
 
 import Material
 

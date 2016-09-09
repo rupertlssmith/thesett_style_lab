@@ -1,4 +1,4 @@
-module Accounts.Types exposing (..)
+module Tables.Types exposing (..)
 
 import Material
 import Set exposing (..)

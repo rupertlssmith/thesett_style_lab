@@ -5,9 +5,9 @@ import Material
 import Material.Helpers exposing (pure, lift, lift')
 import Layout.State
 import Menu.State
-import Accounts.State
-import Roles.State
-import Permissions.State
+import Tables.State
+import Buttons.State
+import Cards.State
 import Main.Types exposing (..)
 
 
@@ -18,9 +18,9 @@ log =
 init : Model
 init =
     { mdl = Material.model
-    , accounts = Accounts.State.init
-    , roles = Roles.State.init
-    , permissions = Permissions.State.init
+    , accounts = Tables.State.init
+    , roles = Buttons.State.init
+    , permissions = Cards.State.init
     , layout = Layout.State.init
     , menus = Menu.State.init
     , selectedTab = 0
@@ -41,14 +41,14 @@ update action model =
         Mdl msg ->
             Material.update msg model
 
-        AccountsMsg a ->
-            lift .accounts (\m x -> { m | accounts = x }) AccountsMsg Accounts.State.update a model
+        TablesMsg a ->
+            lift .accounts (\m x -> { m | accounts = x }) TablesMsg Tables.State.update a model
 
-        RolesMsg a ->
-            lift .roles (\m x -> { m | roles = x }) RolesMsg Roles.State.update a model
+        ButtonsMsg a ->
+            lift .roles (\m x -> { m | roles = x }) ButtonsMsg Buttons.State.update a model
 
-        PermissionsMsg a ->
-            lift .permissions (\m x -> { m | permissions = x }) PermissionsMsg Permissions.State.update a model
+        CardsMsg a ->
+            lift .permissions (\m x -> { m | permissions = x }) CardsMsg Cards.State.update a model
 
         LayoutMsg a ->
             lift .layout (\m x -> { m | layout = x }) LayoutMsg Layout.State.update a model
