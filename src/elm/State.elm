@@ -5,9 +5,12 @@ import Material
 import Material.Helpers exposing (pure, lift, lift')
 import Layout.State
 import Menu.State
-import Tables.State
+import Typography.State
 import Buttons.State
 import Cards.State
+import Tables.State
+import Forms.State
+import Dialogs.State
 import Main.Types exposing (..)
 
 
@@ -18,9 +21,12 @@ log =
 init : Model
 init =
     { mdl = Material.model
-    , accounts = Tables.State.init
-    , roles = Buttons.State.init
-    , permissions = Cards.State.init
+    , typography = Typography.State.init
+    , buttons = Buttons.State.init
+    , cards = Cards.State.init
+    , tables = Tables.State.init
+    , forms = Forms.State.init
+    , dialogs = Dialogs.State.init
     , layout = Layout.State.init
     , menus = Menu.State.init
     , selectedTab = 0
@@ -41,14 +47,23 @@ update action model =
         Mdl msg ->
             Material.update msg model
 
-        TablesMsg a ->
-            lift .accounts (\m x -> { m | accounts = x }) TablesMsg Tables.State.update a model
+        TypographyMsg a ->
+            lift .typography (\m x -> { m | typography = x }) TypographyMsg Typography.State.update a model
 
         ButtonsMsg a ->
-            lift .roles (\m x -> { m | roles = x }) ButtonsMsg Buttons.State.update a model
+            lift .buttons (\m x -> { m | buttons = x }) ButtonsMsg Buttons.State.update a model
 
         CardsMsg a ->
-            lift .permissions (\m x -> { m | permissions = x }) CardsMsg Cards.State.update a model
+            lift .cards (\m x -> { m | cards = x }) CardsMsg Cards.State.update a model
+
+        TablesMsg a ->
+            lift .tables (\m x -> { m | tables = x }) TablesMsg Tables.State.update a model
+
+        FormsMsg a ->
+            lift .forms (\m x -> { m | forms = x }) FormsMsg Forms.State.update a model
+
+        DialogsMsg a ->
+            lift .dialogs (\m x -> { m | dialogs = x }) DialogsMsg Dialogs.State.update a model
 
         LayoutMsg a ->
             lift .layout (\m x -> { m | layout = x }) LayoutMsg Layout.State.update a model

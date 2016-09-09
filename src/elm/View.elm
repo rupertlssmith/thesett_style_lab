@@ -14,9 +14,12 @@ import Material.Icon as Icon
 import Material.Toggles as Toggles
 import Material.Typography as Typography
 import Layout.Types
-import Tables.View
+import Typography.View
 import Buttons.View
 import Cards.View
+import Tables.View
+import Forms.View
+import Dialogs.View
 import Main.Types exposing (..)
 
 
@@ -87,7 +90,7 @@ view' model =
                           -}
                         , case nth model.selectedTab tabs of
                             Just ( "Tables", _, _ ) ->
-                                App.map TablesMsg (Tables.View.dialog model.accounts)
+                                App.map TablesMsg (Tables.View.dialog model.tables)
 
                             _ ->
                                 div [] []
@@ -124,9 +127,12 @@ header model =
 
 tabs : List ( String, String, Model -> Html Msg )
 tabs =
-    [ ( "Tables", "accounts", .accounts >> Tables.View.root >> App.map TablesMsg )
-    , ( "Buttons", "roles", .roles >> Buttons.View.root >> App.map ButtonsMsg )
-    , ( "Cards", "permissions", .permissions >> Cards.View.root >> App.map CardsMsg )
+    [ ( "Typography", "typography", .typography >> Typography.View.root >> App.map TypographyMsg )
+    , ( "Buttons", "buttons", .buttons >> Buttons.View.root >> App.map ButtonsMsg )
+    , ( "Cards", "cards", .cards >> Cards.View.root >> App.map CardsMsg )
+    , ( "Tables", "tables", .tables >> Tables.View.root >> App.map TablesMsg )
+    , ( "Forms", "forms", .forms >> Forms.View.root >> App.map FormsMsg )
+    , ( "Dialogs", "dialogs", .dialogs >> Dialogs.View.root >> App.map DialogsMsg )
     ]
 
 
