@@ -21,7 +21,7 @@ import Tables.State exposing (..)
 root : Model -> Html Msg
 root model =
     div [ class "layout-fixed-width" ]
-        [ h4 [] [ text "User Tables" ]
+        [ h2 [] [ text "Tables" ]
         , table model
         ]
 
