@@ -1,0 +1,7 @@
+{
+    "name": "builder-ui",
+    "description": "A form builder.",
+    "version": "0.0.0",
+    "dependencies": {
+    }
+}
