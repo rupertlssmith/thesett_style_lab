@@ -7,6 +7,8 @@ import Platform.Cmd exposing (Cmd)
 import String
 import Material.Options as Options exposing (Style, css)
 import Material.Color as Color
+import Material.Button as Button
+import Material.Textfield as Textfield
 import Forms.Types exposing (..)
 
 
@@ -16,11 +18,12 @@ root model =
         [ h2 []
             [ text "Forms" ]
         , form [ action "#" ]
-            [ div [ class "mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ]
-                [ input [ class "mdl-textfield__input", id "sample1", type' "text" ]
-                    []
-                , label [ class "mdl-textfield__label", for "sample1" ]
-                    [ text "Text..." ]
+            [ Textfield.render Mdl
+                [ 2 ]
+                model.mdl
+                [ Textfield.label "Text..."
+                , Textfield.floatingLabel
+                , Textfield.text'
                 ]
             ]
         , form [ action "#" ]
@@ -44,12 +47,13 @@ root model =
         , div [ class "control-bar" ]
             [ div [ class "control-bar__row" ]
                 [ div [ class "control-bar__left-0" ]
-                    [ button [ class "mdl-button mdl-js-button mdl-button--primary" ]
-                        [ text "Accept" ]
-                    ]
-                , div [ class "control-bar__left-0" ]
-                    [ button [ class "mdl-button mdl-js-button mdl-button--accent" ]
-                        [ text "Cancel" ]
+                    [ Button.render Mdl
+                        [ 0 ]
+                        model.mdl
+                        [ Button.colored
+                        , Button.ripple
+                        ]
+                        [ text "Submit" ]
                     ]
                 ]
             ]
