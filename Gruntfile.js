@@ -153,27 +153,26 @@ module.exports = function(grunt) {
             'dist': {
                 options: {
                     engine: 'im',
-                    quality: '25',
                     sizes: [{
                         width: '100%',
                         name: 'large',
                         suffix: '.x2'
                     }, {
-                        width: '66%',
+                        width: '100%',
                         name: 'medium',
                         suffix: '.x2'
                     }, {
-                        width: '44%',
+                        width: '90%',
                         name: 'small',
                         suffix: '.x2'
                     }, {
                         width: '50%',
                         name: 'large'
                     }, {
-                        width: '33%',
+                        width: '50%',
                         name: 'medium'
                     }, {
-                        width: '22%',
+                        width: '40%',
                         name: 'small'
                     }]
                 },
