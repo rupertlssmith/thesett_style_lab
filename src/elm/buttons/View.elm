@@ -7,6 +7,8 @@ import Platform.Cmd exposing (Cmd)
 import String
 import Material.Options as Options exposing (Style, css)
 import Material.Color as Color
+import Material.Button as Button
+import Material.Icon as Icon
 import Buttons.Types exposing (..)
 
 
@@ -15,9 +17,19 @@ root model =
     div [ class "layout-fixed-width" ]
         [ h2 []
             [ text "Buttons" ]
-        , button [ class "mdl-button mdl-js-button mdl-button--primary" ]
+        , Button.render Mdl
+            [ 0 ]
+            model.mdl
+            [ Button.colored
+            , Button.ripple
+            ]
             [ text "Button" ]
-        , button [ class "mdl-button mdl-js-button mdl-button--accent" ]
+        , Button.render Mdl
+            [ 1 ]
+            model.mdl
+            [ Button.accent
+            , Button.ripple
+            ]
             [ text "Button" ]
         , h2 []
             [ text "Chips" ]
@@ -43,13 +55,22 @@ root model =
                         [ text "Some text" ]
                     ]
                 , div [ class "control-bar__right-0" ]
-                    [ button [ class "mdl-button mdl-js-button mdl-button--fab mdl-button--colored" ]
-                        [ i [ class "material-icons" ]
-                            [ text "add" ]
+                    [ Button.render Mdl
+                        [ 3 ]
+                        model.mdl
+                        [ Button.fab
+                        , Button.colored
+                        , Button.ripple
                         ]
+                        [ Icon.i "add" ]
                     ]
                 , div [ class "control-bar__right-0" ]
-                    [ button [ class "mdl-button mdl-js-button mdl-button--primary" ]
+                    [ Button.render Mdl
+                        [ 4 ]
+                        model.mdl
+                        [ Button.colored
+                        , Button.ripple
+                        ]
                         [ text "Button" ]
                     ]
                 ]
