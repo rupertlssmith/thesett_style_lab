@@ -5,11 +5,28 @@ import Html.Attributes exposing (title, class, for, id, type', pattern, action)
 import Html.App as App
 import Platform.Cmd exposing (Cmd)
 import String
+import Regex
 import Material.Options as Options exposing (Style, css)
 import Material.Color as Color
 import Material.Button as Button
 import Material.Textfield as Textfield
 import Forms.Types exposing (..)
+
+
+rx : String
+rx =
+    "[0-9]*"
+
+
+rx' : Regex.Regex
+rx' =
+    Regex.regex rx
+
+
+match : String -> Regex.Regex -> Bool
+match str rx =
+    Regex.find Regex.All rx str
+        |> List.any (.match >> (==) str)
 
 
 root : Model -> Html Msg
@@ -19,7 +36,7 @@ root model =
             [ text "Forms" ]
         , form [ action "#" ]
             [ Textfield.render Mdl
-                [ 2 ]
+                [ 1 ]
                 model.mdl
                 [ Textfield.label "Text..."
                 , Textfield.floatingLabel
@@ -27,21 +44,25 @@ root model =
                 ]
             ]
         , form [ action "#" ]
-            [ div [ class "mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ]
-                [ input [ class "mdl-textfield__input", id "sample2", pattern "-?[0-9]*(\\.[0-9]+)?", type' "text" ]
-                    []
-                , label [ class "mdl-textfield__label", for "sample2" ]
-                    [ text "Number..." ]
-                , span [ class "mdl-textfield__error" ]
-                    [ text "Input is not a number!" ]
+            [ Textfield.render Mdl
+                [ 2 ]
+                model.mdl
+                [ Textfield.label "Number.."
+                , Textfield.floatingLabel
+                , if not <| match model.str4 rx' then
+                    Textfield.error <| "Not a number"
+                  else
+                    Options.nop
+                , Textfield.onInput Upd4
                 ]
             ]
         , form [ action "#" ]
-            [ div [ class "mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ]
-                [ input [ class "mdl-textfield__input", id "sample3", type' "text" ]
-                    []
-                , label [ class "mdl-textfield__label", for "sample2" ]
-                    [ text "Text..." ]
+            [ Textfield.render Mdl
+                [ 3 ]
+                model.mdl
+                [ Textfield.label "Text..."
+                , Textfield.floatingLabel
+                , Textfield.text'
                 ]
             ]
         , div [ class "control-bar" ]

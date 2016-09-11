@@ -2,7 +2,7 @@ module Main.State exposing (init, update)
 
 import Platform.Cmd exposing (..)
 import Material
-import Material.Helpers exposing (pure, lift, lift')
+import Material.Helpers exposing (pure, lift, lift', map1st, map2nd)
 import Layout.State
 import Menu.State
 import Typography.State
@@ -60,7 +60,10 @@ update action model =
             lift .tables (\m x -> { m | tables = x }) TablesMsg Tables.State.update a model
 
         FormsMsg a ->
-            lift .forms (\m x -> { m | forms = x }) FormsMsg Forms.State.update a model
+            Forms.State.update a model.forms
+                |> Maybe.map (map1st (\x -> { model | forms = x }))
+                |> Maybe.withDefault ( model, Cmd.none )
+                |> map2nd (Cmd.map FormsMsg)
 
         DialogsMsg a ->
             lift .dialogs (\m x -> { m | dialogs = x }) DialogsMsg Dialogs.State.update a model
