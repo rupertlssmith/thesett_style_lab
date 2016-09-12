@@ -92,6 +92,9 @@ view' model =
                             Just ( "Tables", _, _ ) ->
                                 App.map TablesMsg (Tables.View.dialog model.tables)
 
+                            Just ( "Dialogs", _, _ ) ->
+                                App.map DialogsMsg (Dialogs.View.dialog model.dialogs)
+
                             _ ->
                                 div [] []
                         ]
