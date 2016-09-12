@@ -13,6 +13,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-angular-templates');
+    grunt.loadNpmTasks('grunt-exec');    
     grunt.loadNpmTasks('grunt-elm');
 
     grunt.initConfig({
@@ -207,6 +208,13 @@ module.exports = function(grunt) {
             }
         },
 
+        'exec': {
+            'webjar': {
+                command: './make-webjar'
+            }
+        },
+
+
         'watch': {
             'dev': {
                 files: ['Gruntfile.js', 'bower.json', 'elm-package.json', 'server.js', 'config.rb', 'src/**'],
@@ -234,5 +242,5 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', ['bower', 'connect:server', 'watch:dev']);
     grunt.registerTask('minified', ['bower', 'connect:server', 'watch:min']);
     grunt.registerTask('build', ['bower', 'html2js', 'copy', 'elm', 'concat:libs', 'responsive_images']);
-    grunt.registerTask('package', ['build', 'uglify', 'compress']);
+    grunt.registerTask('package', ['build', 'uglify', 'compress', 'exec:webjar']);
 };

@@ -1,0 +1,8 @@
+#!/bin/sh
+VERSION=`cat current_version`
+echo $VERSION
+
+mkdir -p tmp/webjar/META-INF/resources/webjars/style-lab
+cp -R app/* tmp/webjar/META-INF/resources/webjars/style-lab/
+jar -cf dist/style-lab-$VERSION.jar -C tmp/webjar .
+mvn install:install-file -Dfile=dist/style-lab-$VERSION.jar -DgroupId=com.thesett.laf -DartifactId=style-lab -Dversion=$VERSION -Dpackaging=jar
