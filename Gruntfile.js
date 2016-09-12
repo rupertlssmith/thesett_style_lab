@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         'elm': {
             compile: {
                 files: {
-                    'app/auth_web_ui.js': ['src/elm/**/*.elm']
+                    'app/style_lab.js': ['src/elm/**/*.elm']
                 }
             }
         },

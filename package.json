@@ -1,6 +1,6 @@
 {
     "version": "1.0.0-SNAPSHOT",
-    "name": "auth_web_ui",
+    "name": "style_lab",
     "description": "UI for authentication server.",
     "devDependencies": {
         "karma": "^0.12.16",
