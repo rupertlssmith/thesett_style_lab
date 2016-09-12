@@ -108,7 +108,7 @@ header model =
             []
             [ a
                 [ Html.Attributes.id "thesett-logo"
-                , href "http://"
+                , href "/"
                 ]
                 []
             , Layout.spacer
