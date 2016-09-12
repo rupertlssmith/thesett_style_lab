@@ -78,7 +78,7 @@ view' model =
                         [ if model.debugStylesheet then
                             Html.node "link"
                                 [ Html.Attributes.attribute "rel" "stylesheet"
-                                , Html.Attributes.attribute "href" "/styles/debug.css"
+                                , Html.Attributes.attribute "href" "styles/debug.css"
                                 ]
                                 []
                           else
