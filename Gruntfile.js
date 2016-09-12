@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-angular-templates');
-    grunt.loadNpmTasks('grunt-exec');    
+    grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-elm');
 
     grunt.initConfig({
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         'elm': {
             compile: {
                 files: {
-                    'app/style_lab.js': ['src/elm/**/*.elm']
+                    'app/style-lab.js': ['src/elm/**/*.elm']
                 }
             }
         },
@@ -211,6 +211,9 @@ module.exports = function(grunt) {
         'exec': {
             'webjar': {
                 command: './make-webjar'
+            },
+            'zipdist': {
+                command: './install-zip'
             }
         },
 
@@ -242,5 +245,5 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', ['bower', 'connect:server', 'watch:dev']);
     grunt.registerTask('minified', ['bower', 'connect:server', 'watch:min']);
     grunt.registerTask('build', ['bower', 'html2js', 'copy', 'elm', 'concat:libs', 'responsive_images']);
-    grunt.registerTask('package', ['build', 'uglify', 'compress', 'exec:webjar']);
+    grunt.registerTask('package', ['build', 'uglify', 'compress', 'exec:webjar', 'exec:zipdist']);
 };

@@ -1,0 +1,5 @@
+#!/bin/sh
+VERSION=`cat current_version`
+echo $VERSION
+
+mvn install:install-file -Dfile=dist/style-lab-$VERSION.zip -DgroupId=com.thesett.laf -DartifactId=style-lab -Dversion=$VERSION -Dpackaging=zip
