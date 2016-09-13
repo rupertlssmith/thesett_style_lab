@@ -1,0 +1,3 @@
+#!/bin/sh
+
+java -jar closure-compiler.jar -O ADVANCED --assume_function_wrapper --js app/style-lab.js > style-lab.js && cp style-lab.js app/

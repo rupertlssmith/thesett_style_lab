@@ -155,6 +155,9 @@ module.exports = function(grunt) {
             },
             'zipdist': {
                 command: './install-zip'
+            },
+            'closure': {
+                command: './closure-minify'
             }
         },
 
@@ -186,5 +189,5 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', ['bower', 'connect:server', 'watch:dev']);
     grunt.registerTask('minified', ['bower', 'connect:server', 'watch:min']);
     grunt.registerTask('build', ['bower', 'copy', 'elm', 'responsive_images']);
-    grunt.registerTask('package', ['build', 'uglify', 'compress', 'exec:webjar', 'exec:zipdist']);
+    grunt.registerTask('package', ['build', 'exec:closure', 'uglify', 'compress', 'exec:webjar', 'exec:zipdist']);
 };
