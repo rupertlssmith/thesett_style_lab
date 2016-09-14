@@ -181,7 +181,7 @@ module.exports = function(grunt) {
 
         'clean': {
             temp: {
-                src: ['tmp', 'app', 'dist']
+                src: ['tmp', 'app', 'dist', "bower_components", "elm-stuff"]
             }
         },
     });
