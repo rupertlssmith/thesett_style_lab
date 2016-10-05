@@ -1,3 +1,24 @@
 #debug-box {
   min-width: 160px;
 }
+
+.horizontal-section {
+  padding: 0 !important;
+}
+.avatar {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ccc;
+}
+paper-item {
+  --paper-item: {
+    cursor: pointer;
+  };
+}
+.sublist {
+  padding-left: 20px;
+  padding-right: 20px;
+}

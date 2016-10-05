@@ -24,7 +24,7 @@ module.exports = function(grunt) {
                 options: {
                     install: true,
                     copy: false,
-                    targetDir: 'assets/bower_components',
+                    targetDir: 'bower_components',
                     cleanTargetDir: false
                 }
             }
@@ -62,9 +62,14 @@ module.exports = function(grunt) {
                 }, {
                     expand: true,
                     cwd: 'src',
-                    src: ['index.html'],
+                    src: ['index.html', 'demo.html'],
                     dest: 'app'
-                }],
+                }, {
+                    expand: true,
+                    cwd: 'bower_components/',
+                    src: ['**'],
+                    dest: 'app/libs'
+                }]
             }
         },
 
