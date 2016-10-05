@@ -1,7 +1,7 @@
 module Multiselect.View exposing (root)
 
 import Html exposing (..)
-import Html.Attributes exposing (title, class, type')
+import Html.Attributes exposing (title, class, type', attribute)
 import Material.Button as Button
 import Material.Icon as Icon
 import Multiselect.Types exposing (..)
@@ -12,7 +12,7 @@ root model =
     div [ class "layout-fixed-width" ]
         [ div [ class "horizontal-section-container" ]
             [ h4 [] [ text "Multiselect" ]
-            , paperListBox []
+            , paperListBox [ attribute "multi" "" ]
                 [ paperItem [] [ text "Bold" ]
                 , paperItem [] [ text "Italic" ]
                 , paperItem [] [ text "Underline" ]
