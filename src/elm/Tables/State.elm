@@ -2,7 +2,6 @@ module Tables.State exposing (init, update, allSelected, someSelected, key)
 
 import Platform.Cmd exposing (Cmd)
 import Material
-import Material.Helpers exposing (lift)
 import Tables.Types exposing (..)
 import Set as Set
 

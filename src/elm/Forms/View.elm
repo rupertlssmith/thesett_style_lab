@@ -2,12 +2,8 @@ module Forms.View exposing (root)
 
 import Html exposing (..)
 import Html.Attributes exposing (title, class, for, id, type', pattern, action)
-import Html.App as App
-import Platform.Cmd exposing (Cmd)
-import String
 import Regex
 import Material.Options as Options exposing (Style, css)
-import Material.Color as Color
 import Material.Button as Button
 import Material.Textfield as Textfield
 import Forms.Types exposing (..)

@@ -2,11 +2,6 @@ module Dialogs.View exposing (root, dialog)
 
 import Html exposing (..)
 import Html.Attributes exposing (title, class, action)
-import Html.App as App
-import Platform.Cmd exposing (Cmd)
-import String
-import Material.Options as Options exposing (Style, css, cs)
-import Material.Color as Color
 import Material.Button as Button
 import Material.Dialog as Dialog
 import Material.Textfield as Textfield

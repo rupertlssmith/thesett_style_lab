@@ -1,14 +1,9 @@
 module Tables.View exposing (root, dialog)
 
 import Set as Set
-import Debug as Debug
 import Html exposing (..)
 import Html.Attributes exposing (title, class)
-import Html.App as App
-import Platform.Cmd exposing (Cmd)
-import String
 import Material.Options as Options exposing (Style, cs, when, nop, disabled)
-import Material.Color as Color
 import Material.Dialog as Dialog
 import Material.Table as Table
 import Material.Button as Button

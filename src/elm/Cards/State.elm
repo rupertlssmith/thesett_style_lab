@@ -2,7 +2,6 @@ module Cards.State exposing (init, update)
 
 import Platform.Cmd exposing (Cmd)
 import Material
-import Material.Helpers exposing (lift)
 import Cards.Types exposing (..)
 
 
