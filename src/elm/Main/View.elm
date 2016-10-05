@@ -16,6 +16,7 @@ import Buttons.View
 import Cards.View
 import Tables.View
 import Forms.View
+import Multiselect.View
 import Dialogs.View
 import Main.Types exposing (..)
 
@@ -132,6 +133,7 @@ tabs =
     , ( "Cards", "cards", .cards >> Cards.View.root >> App.map CardsMsg )
     , ( "Tables", "tables", .tables >> Tables.View.root >> App.map TablesMsg )
     , ( "Forms", "forms", .forms >> Forms.View.root >> App.map FormsMsg )
+    , ( "Multiselect", "multiselect", .multiselect >> Multiselect.View.root >> App.map MultiselectMsg )
     , ( "Dialogs", "dialogs", .dialogs >> Dialogs.View.root >> App.map DialogsMsg )
     ]
 

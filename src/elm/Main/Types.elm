@@ -8,6 +8,7 @@ import Buttons.Types
 import Cards.Types
 import Tables.Types
 import Forms.Types
+import Multiselect.Types
 import Dialogs.Types
 
 
@@ -18,6 +19,7 @@ type alias Model =
     , cards : Cards.Types.Model
     , tables : Tables.Types.Model
     , forms : Forms.Types.Model
+    , multiselect : Multiselect.Types.Model
     , dialogs : Dialogs.Types.Model
     , layout : Layout.Types.Model
     , menus : Menu.Types.Model
@@ -35,6 +37,7 @@ type Msg
     | CardsMsg Cards.Types.Msg
     | TablesMsg Tables.Types.Msg
     | FormsMsg Forms.Types.Msg
+    | MultiselectMsg Multiselect.Types.Msg
     | DialogsMsg Dialogs.Types.Msg
     | LayoutMsg Layout.Types.Msg
     | MenusMsg Menu.Types.Msg

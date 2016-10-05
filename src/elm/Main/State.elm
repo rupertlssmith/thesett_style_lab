@@ -10,6 +10,7 @@ import Buttons.State
 import Cards.State
 import Tables.State
 import Forms.State
+import Multiselect.State
 import Dialogs.State
 import Main.Types exposing (..)
 
@@ -26,6 +27,7 @@ init =
     , cards = Cards.State.init
     , tables = Tables.State.init
     , forms = Forms.State.init
+    , multiselect = Multiselect.State.init
     , dialogs = Dialogs.State.init
     , layout = Layout.State.init
     , menus = Menu.State.init
@@ -64,6 +66,9 @@ update action model =
                 |> Maybe.map (map1st (\x -> { model | forms = x }))
                 |> Maybe.withDefault ( model, Cmd.none )
                 |> map2nd (Cmd.map FormsMsg)
+
+        MultiselectMsg a ->
+            lift .multiselect (\m x -> { m | multiselect = x }) MultiselectMsg Multiselect.State.update a model
 
         DialogsMsg a ->
             lift .dialogs (\m x -> { m | dialogs = x }) DialogsMsg Dialogs.State.update a model
