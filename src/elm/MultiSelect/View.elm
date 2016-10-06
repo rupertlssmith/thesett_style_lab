@@ -25,7 +25,7 @@ root model =
                     , on "iron-select" (selectedDecoder |> Decode.map Selected)
                     , on "iron-deselect" (selectedDecoder |> Decode.map Deselected)
                     ]
-                    (Dict.toList model.data |> List.map dataToPaperItem)
+                    (Dict.toList model.data |> List.map (dataToPaperItem model))
                 ]
             ]
         , div []
@@ -38,8 +38,11 @@ dataToChip ( idx, value ) =
         [ text value ]
 
 
-dataToPaperItem ( idx, value ) =
-    paperItem [ Html.Attributes.value (toString idx) ] [ text value ]
+dataToPaperItem model ( idx, value ) =
+    if Dict.member idx model.selected then
+        paperItem [ Html.Attributes.value (toString idx), class "iron-selected" ] [ text value ]
+    else
+        paperItem [ Html.Attributes.value (toString idx) ] [ text value ]
 
 
 selectedDecoder : Decode.Decoder (Result String Int)
