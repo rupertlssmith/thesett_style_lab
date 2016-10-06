@@ -10,24 +10,30 @@ import Multiselect.Types exposing (..)
 
 root : Model -> Html Msg
 root model =
-    div [ class "layout-fixed-width" ]
-        [ div [ class "horizontal-section-container" ]
-            [ h4 [] [ text "Multiselect" ]
-            , paperListBox [ attribute "multi" "" ]
-                [ ( "item1", paperItem [] [ ( "1", text "Bold" ) ] )
-                , ( "item2", paperItem [] [ ( "2", text "Italic" ) ] )
-                , ( "item3", paperItem [] [ ( "3", text "Underline" ) ] )
-                , ( "item4", paperItem [] [ ( "4", text "Strikethrough" ) ] )
+    div
+        [ class "layout-fixed-width" ]
+        [ div []
+            [ h4 [] [ text "Multi-select" ]
+            , Html.Keyed.node "div"
+                [ class "horizontal-section" ]
+                [ ( "listbox"
+                  , paperListBox [ attribute "multi" "" ]
+                        [ paperItem [] [ text "Bold" ]
+                        , paperItem [] [ text "Italic" ]
+                        , paperItem [] [ text "Underline" ]
+                        , paperItem [] [ text "Strikethrough" ]
+                        ]
+                  )
                 ]
             ]
         ]
 
 
-paperListBox : List (Attribute a) -> List ( String, Html a ) -> Html a
+paperListBox : List (Attribute a) -> List (Html a) -> Html a
 paperListBox =
-    Html.Keyed.node "paper-listbox"
+    Html.node "paper-listbox"
 
 
-paperItem : List (Attribute a) -> List ( String, Html a ) -> Html a
+paperItem : List (Attribute a) -> List (Html a) -> Html a
 paperItem =
-    Html.Keyed.node "paper-item"
+    Html.node "paper-item"
