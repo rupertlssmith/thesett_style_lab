@@ -16,6 +16,7 @@ init =
             , ( 2, "Underline" )
             , ( 3, "Strikethrough" )
             ]
+    , selected = Dict.empty
     }
 
 
@@ -28,7 +29,12 @@ update action model =
         Selected result ->
             case result of
                 Ok idx ->
-                    ( model, Cmd.none )
+                    case (Dict.get idx model.data) of
+                        Just value ->
+                            ( { model | selected = Dict.insert idx value model.selected }, Cmd.none )
+
+                        Nothing ->
+                            ( model, Cmd.none )
 
                 Err _ ->
                     ( model, Cmd.none )

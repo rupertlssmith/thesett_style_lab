@@ -7,6 +7,7 @@ import Material
 type alias Model =
     { mdl : Material.Model
     , data : Dict Int String
+    , selected : Dict Int String
     }
 
 

@@ -1,8 +1,9 @@
 module Multiselect.View exposing (root)
 
 import String
+import Dict
 import Html exposing (..)
-import Html.Attributes exposing (title, class, type', attribute, value)
+import Html.Attributes exposing (title, class, type', attribute)
 import Html.Events exposing (on)
 import Html.Keyed
 import Material.Button as Button
@@ -25,15 +26,21 @@ root model =
                         , attribute "attr-for-selected" "value"
                         , on "iron-select" (selectedDecoder |> Decode.map Selected)
                         ]
-                        [ paperItem [ value "0" ] [ text "Bold" ]
-                        , paperItem [ value "1" ] [ text "Italic" ]
-                        , paperItem [ value "2" ] [ text "Underline" ]
-                        , paperItem [ value "3" ] [ text "Strikethrough" ]
-                        ]
+                        (Dict.toList model.data |> List.map dataToPaperItem)
                   )
                 ]
             ]
+        , div []
+            (Dict.toList model.selected |> List.map dataToChip)
         ]
+
+
+dataToChip ( idx, value ) =
+    text value
+
+
+dataToPaperItem ( idx, value ) =
+    paperItem [ Html.Attributes.value (toString idx) ] [ text value ]
 
 
 selectedDecoder : Decode.Decoder (Result String Int)
