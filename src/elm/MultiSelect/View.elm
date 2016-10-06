@@ -25,6 +25,7 @@ root model =
                         [ attribute "multi" ""
                         , attribute "attr-for-selected" "value"
                         , on "iron-select" (selectedDecoder |> Decode.map Selected)
+                        , on "iron-deselect" (selectedDecoder |> Decode.map Deselected)
                         ]
                         (Dict.toList model.data |> List.map dataToPaperItem)
                   )
@@ -36,7 +37,8 @@ root model =
 
 
 dataToChip ( idx, value ) =
-    text value
+    span [ class "mdl-chip mdl-chip__text" ]
+        [ text value ]
 
 
 dataToPaperItem ( idx, value ) =

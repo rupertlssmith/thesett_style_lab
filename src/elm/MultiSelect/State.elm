@@ -38,3 +38,11 @@ update action model =
 
                 Err _ ->
                     ( model, Cmd.none )
+
+        Deselected result ->
+            case result of
+                Ok idx ->
+                    ( { model | selected = Dict.remove idx model.selected }, Cmd.none )
+
+                Err _ ->
+                    ( model, Cmd.none )

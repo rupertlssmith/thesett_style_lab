@@ -14,3 +14,4 @@ type alias Model =
 type Msg
     = Mdl (Material.Msg Msg)
     | Selected (Result String Int)
+    | Deselected (Result String Int)
