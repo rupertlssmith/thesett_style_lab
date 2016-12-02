@@ -1,7 +1,7 @@
 module Forms.View exposing (root)
 
 import Html exposing (..)
-import Html.Attributes exposing (title, class, for, id, type', pattern, action)
+import Html.Attributes exposing (title, class, for, id, type_, pattern, action)
 import Regex
 import Material.Options as Options exposing (Style, css)
 import Material.Button as Button
@@ -14,8 +14,8 @@ rx =
     "[0-9]*"
 
 
-rx' : Regex.Regex
-rx' =
+rx_ : Regex.Regex
+rx_ =
     Regex.regex rx
 
 
@@ -36,7 +36,7 @@ root model =
                 model.mdl
                 [ Textfield.label "Text..."
                 , Textfield.floatingLabel
-                , Textfield.text'
+                , Textfield.text_
                 ]
             ]
         , form [ action "#" ]
@@ -45,7 +45,7 @@ root model =
                 model.mdl
                 [ Textfield.label "Number.."
                 , Textfield.floatingLabel
-                , if not <| match model.str4 rx' then
+                , if not <| match model.str4 rx_ then
                     Textfield.error <| "Not a number"
                   else
                     Options.nop
@@ -58,7 +58,7 @@ root model =
                 model.mdl
                 [ Textfield.label "Text..."
                 , Textfield.floatingLabel
-                , Textfield.text'
+                , Textfield.text_
                 ]
             ]
         , div [ class "control-bar" ]

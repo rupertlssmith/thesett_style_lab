@@ -155,6 +155,9 @@ module.exports = function(grunt) {
         },
 
         'exec': {
+            'elm-github-install': {
+                command: 'elm-github-install'
+            },
             'webjar': {
                 command: './make-webjar'
             },
@@ -193,6 +196,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('dev', ['bower', 'connect:server', 'watch:dev']);
     grunt.registerTask('minified', ['bower', 'connect:server', 'watch:min']);
-    grunt.registerTask('build', ['bower', 'copy', 'elm', 'responsive_images']);
+    grunt.registerTask('build', ['bower', 'copy', 'exec:elm-github-install', 'elm', 'responsive_images']);
     grunt.registerTask('package', ['build', 'exec:closure', 'uglify', 'compress', 'exec:webjar', 'exec:zipdist']);
 };

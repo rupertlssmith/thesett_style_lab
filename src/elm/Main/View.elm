@@ -5,11 +5,11 @@ import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (href, class, style, id)
 import Html.Lazy
-import Html.App as App
 import Material.Layout as Layout
 import Material.Options as Options exposing (css, when)
 import Material.Toggles as Toggles
 import Material.Typography as Typography
+import ViewUtils
 import Layout.Types
 import Typography.View
 import Buttons.View
@@ -28,11 +28,11 @@ nth k xs =
 
 view : Model -> Html Msg
 view =
-    Html.Lazy.lazy view'
+    Html.Lazy.lazy view_
 
 
-view' : Model -> Html Msg
-view' model =
+view_ : Model -> Html Msg
+view_ model =
     let
         top =
             (Array.get model.selectedTab tabViews |> Maybe.withDefault e404) model
@@ -41,9 +41,9 @@ view' model =
             model.mdl
             [ Layout.selectedTab model.selectedTab
             , Layout.onSelectTab SelectTab
-            , Layout.fixedHeader `when` model.layout.fixedHeader
-            , Layout.fixedDrawer `when` model.layout.fixedDrawer
-            , Layout.fixedTabs `when` model.layout.fixedTabs
+            , Layout.fixedHeader |> ViewUtils.when model.layout.fixedHeader
+            , Layout.fixedDrawer |> ViewUtils.when model.layout.fixedDrawer
+            , Layout.fixedTabs |> ViewUtils.when model.layout.fixedTabs
             , (case model.layout.header of
                 Layout.Types.Waterfall x ->
                     Layout.waterfall x
@@ -57,7 +57,7 @@ view' model =
                 Layout.Types.Scrolling ->
                     Layout.scrolling
               )
-                `when` model.layout.withHeader
+                |> ViewUtils.when model.layout.withHeader
             , if model.transparentHeader then
                 Layout.transparentHeader
               else
@@ -88,10 +88,10 @@ view' model =
                           -}
                         , case nth model.selectedTab tabs of
                             Just ( "Tables", _, _ ) ->
-                                App.map TablesMsg (Tables.View.dialog model.tables)
+                                Html.map TablesMsg (Tables.View.dialog model.tables)
 
                             Just ( "Dialogs", _, _ ) ->
-                                App.map DialogsMsg (Dialogs.View.dialog model.dialogs)
+                                Html.map DialogsMsg (Dialogs.View.dialog model.dialogs)
 
                             _ ->
                                 div [] []
@@ -128,13 +128,13 @@ header model =
 
 tabs : List ( String, String, Model -> Html Msg )
 tabs =
-    [ ( "Typography", "typography", .typography >> Typography.View.root >> App.map TypographyMsg )
-    , ( "Buttons", "buttons", .buttons >> Buttons.View.root >> App.map ButtonsMsg )
-    , ( "Cards", "cards", .cards >> Cards.View.root >> App.map CardsMsg )
-    , ( "Tables", "tables", .tables >> Tables.View.root >> App.map TablesMsg )
-    , ( "Forms", "forms", .forms >> Forms.View.root >> App.map FormsMsg )
-    , ( "Multiselect", "multiselect", .multiselect >> Multiselect.View.root >> App.map MultiselectMsg )
-    , ( "Dialogs", "dialogs", .dialogs >> Dialogs.View.root >> App.map DialogsMsg )
+    [ ( "Typography", "typography", .typography >> Typography.View.root >> Html.map TypographyMsg )
+    , ( "Buttons", "buttons", .buttons >> Buttons.View.root >> Html.map ButtonsMsg )
+    , ( "Cards", "cards", .cards >> Cards.View.root >> Html.map CardsMsg )
+    , ( "Tables", "tables", .tables >> Tables.View.root >> Html.map TablesMsg )
+    , ( "Forms", "forms", .forms >> Forms.View.root >> Html.map FormsMsg )
+    , ( "Multiselect", "multiselect", .multiselect >> Multiselect.View.root >> Html.map MultiselectMsg )
+    , ( "Dialogs", "dialogs", .dialogs >> Dialogs.View.root >> Html.map DialogsMsg )
     ]
 
 
@@ -192,6 +192,6 @@ stylesheet : Html a
 stylesheet =
     Options.stylesheet """
   .mdl-layout__header--transparent {
-    background: url('https://getmdl.io/assets/demos/transparent.jpg') center / cover;
+    background: url(_https://getmdl.io/assets/demos/transparent.jpg_) center / cover;
   }
 """

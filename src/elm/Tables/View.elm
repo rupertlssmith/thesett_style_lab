@@ -3,7 +3,7 @@ module Tables.View exposing (root, dialog)
 import Set as Set
 import Html exposing (..)
 import Html.Attributes exposing (title, class)
-import Material.Options as Options exposing (Style, cs, when, nop, disabled)
+import Material.Options as Options exposing (Style, cs, nop, disabled)
 import Material.Dialog as Dialog
 import Material.Table as Table
 import Material.Button as Button
@@ -11,6 +11,7 @@ import Material.Icon as Icon
 import Material.Toggles as Toggles
 import Tables.Types exposing (..)
 import Tables.State exposing (..)
+import ViewUtils
 
 
 root : Model -> Html Msg
@@ -47,7 +48,7 @@ table model =
                     |> List.indexedMap
                         (\idx item ->
                             Table.tr
-                                [ Table.selected `when` Set.member (key item) model.selected ]
+                                [ Table.selected |> ViewUtils.when (Set.member (key item) model.selected) ]
                                 [ Table.td []
                                     [ Toggles.checkbox Mdl
                                         [ idx ]

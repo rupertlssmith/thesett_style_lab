@@ -2,7 +2,7 @@ module Main.State exposing (init, update)
 
 import Platform.Cmd exposing (..)
 import Material
-import Material.Helpers exposing (pure, lift, lift', map1st, map2nd)
+import Material.Helpers exposing (pure, lift, lift_, map1st, map2nd)
 import Layout.State
 import Menu.State
 import Typography.State

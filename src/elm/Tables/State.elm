@@ -40,8 +40,8 @@ someSelected model =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case action of
-        Mdl action' ->
-            Material.update action' model
+        Mdl action_ ->
+            Material.update action_ model
 
         ToggleAll ->
             { model

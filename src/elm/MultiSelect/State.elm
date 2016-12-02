@@ -23,8 +23,8 @@ init =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case (Debug.log "multiselect" action) of
-        Mdl action' ->
-            Material.update action' model
+        Mdl action_ ->
+            Material.update action_ model
 
         Selected result ->
             case result of

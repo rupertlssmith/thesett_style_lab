@@ -13,7 +13,7 @@ import Main.State exposing (..)
 import Main.View exposing (..)
 
 
-main : Program Never
+main : Program Never (Routing.Model Model) (Routing.Msg Msg)
 main =
     Routing.program
         { delta2url = delta2url

@@ -38,14 +38,14 @@ dialog model =
                     model.mdl
                     [ Textfield.label "Username"
                     , Textfield.floatingLabel
-                    , Textfield.text'
+                    , Textfield.text_
                     ]
                 , Textfield.render Mdl
                     [ 1, 2 ]
                     model.mdl
                     [ Textfield.label "Password"
                     , Textfield.floatingLabel
-                    , Textfield.text'
+                    , Textfield.text_
                     , Textfield.password
                     ]
                 ]

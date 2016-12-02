@@ -20,8 +20,8 @@ pure =
 update : Msg -> Model -> Maybe ( Model, Cmd Msg )
 update action model =
     case action of
-        Mdl action' ->
-            Material.update action' model |> Just
+        Mdl action_ ->
+            Material.update action_ model |> Just
 
         Upd4 str ->
             { model | str4 = str } |> pure

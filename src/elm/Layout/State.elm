@@ -32,5 +32,5 @@ update action model =
         Update f ->
             ( f model, Cmd.none )
 
-        Mdl action' ->
-            Material.update action' model
+        Mdl action_ ->
+            Material.update action_ model
