@@ -156,7 +156,7 @@ module.exports = function(grunt) {
 
         'exec': {
             'elm-github-install': {
-                command: 'elm-github-install'
+                command: 'elm-install'
             },
             'webjar': {
                 command: './make-webjar'
